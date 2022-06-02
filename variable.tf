@@ -27,3 +27,35 @@ variable "virtual_networks" {
   }))
   default = {}
 }
+
+# - Subnet object
+# -
+variable "subnets" {
+  description = "The virtal networks subnets with their properties."
+  type = map(object({
+    name              = string
+    vnet_key          = string
+    vnet_name         = string
+    address_prefixes  = list(string)
+  }))
+  default = {}
+}
+
+variable "windows_vm_nics" {
+  type = map(object({
+    name                           = string
+    subnet_id                      = string
+    internal_dns_name_label        = string
+    enable_ip_forwarding           = bool
+    enable_accelerated_networking  = bool
+    dns_servers                    = list(string)
+    ip_configuration_name = string
+    subnet_key = string
+    nic_ip_configurations = list(object({
+      name      = string
+      static_ip = string
+    }))
+  }))
+  description = "Map containing Windows VM NIC objects"
+  default     = {}
+}
