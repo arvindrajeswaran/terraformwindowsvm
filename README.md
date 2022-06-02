@@ -1,1 +1,2 @@
-# vm_asr
+# Azure Virtual Machines using For Each
+
